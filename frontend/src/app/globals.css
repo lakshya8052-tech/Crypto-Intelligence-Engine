@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 transition-colors duration-300;
+  }
+
+  .dark body {
+    @apply bg-gray-900 text-gray-100;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+  }
+  
+  .dark .btn-primary {
+    @apply hover:bg-primary-500;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500;
+  }
+  
+  .dark .btn-secondary {
+    @apply bg-gray-700 text-gray-100 hover:bg-gray-600 focus:ring-gray-400;
+  }
+  
+  .btn-success {
+    @apply bg-success-600 text-white hover:bg-success-700 focus:ring-success-500;
+  }
+  
+  .dark .btn-success {
+    @apply hover:bg-success-500;
+  }
+  
+  .btn-danger {
+    @apply bg-danger-600 text-white hover:bg-danger-700 focus:ring-danger-500;
+  }
+  
+  .dark .btn-danger {
+    @apply hover:bg-danger-500;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 p-6 transition-colors duration-300;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .dark .card {
+    @apply bg-gray-800 border-gray-700;
+  }
+  
+  .skeleton {
+    @apply animate-pulse bg-gray-200 rounded;
+  }
+  
+  .dark .skeleton {
+    @apply bg-gray-700;
+  }
+  
+  .interactive-element {
+    @apply relative;
+    z-index: 5;
+  }
+  
+  /* Z-index hierarchy */
+  .z-sidebar {
+    z-index: 40;
+  }
+  
+  .z-drawer {
+    z-index: 50;
+  }
+  
+  .z-modal {
+    z-index: 60;
+  }
+  
+  .z-toast {
+    z-index: 70;
+  }
+  
+  .sidebar {
+    @apply fixed left-0 top-0 h-full w-64 bg-white shadow-lg z-sidebar transition-colors duration-300;
+  }
+  
+  .dark .sidebar {
+    @apply bg-gray-800 border-r border-gray-700;
+  }
+  
+  .main-content {
+    @apply ml-64 flex-1 overflow-hidden;
+  }
+  
+  .grid-container {
+    @apply grid gap-6;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .overlay {
+    @apply fixed inset-0 bg-black bg-opacity-50 z-modal;
+  }
+  
+  /* Modal backdrop with proper z-index */
+  .modal-backdrop {
+    @apply fixed inset-0 bg-black/50 z-modal;
+  }
+  
+  /* Drawer backdrop with proper z-index */
+  .drawer-backdrop {
+    @apply fixed inset-0 bg-black/50 z-drawer;
+  }
+}

@@ -1,0 +1,29 @@
+services:
+  # Main FastAPI application
+  - type: web
+    name: crypto-signals-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    autoDeploy: false
+    plan: free
+    # Environment variables
+    envVars:
+      - key: ENV
+        value: production
+        description: "Environment (development/production)"
+      - key: CORS_ORIGINS
+        value: https://cryptosignals.app,https://www.cryptosignals.app
+        description: "CORS allowed origins (update with actual frontend domain)"
+      - key: API_BASE_URL
+        value: https://crypto-signals-api.onrender.com
+        description: "API base URL (update with actual Render URL)"
+      - key: LOG_LEVEL
+        value: INFO
+        description: "Logging level"
+
+# Build and deployment settings
+# Note: Remove dockerfilePath if not using Docker
+# build:
+#   dockerfilePath: ./Dockerfile
